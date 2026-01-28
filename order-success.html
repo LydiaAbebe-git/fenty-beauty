@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Success - Fenty Beauty</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="top-banner">
+    <div class="container"><p class="text-center text-sm">Free Standard shipping to Ethiopia over Br11668</p></div>
+  </div>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <div class="navbar-left"><span class="flag-icon">🇪🇹</span><span class="country-selector">Ethiopia | English</span></div>
+        <a href="index.html" class="logo">FENTY BEAUTY</a>
+        <div class="navbar-actions">
+          <button class="icon-btn" aria-label="Search"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
+          <button class="icon-btn" aria-label="Wishlist"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button>
+          <a href="cart.html" class="cart-link" aria-label="Cart"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg></a>
+        </div>
+      </div>
+      <div class="navbar-links">
+        <a href="category.html?category=Makeup" class="nav-link">Makeup</a>
+        <a href="category.html?category=Skincare" class="nav-link">Skincare</a>
+        <a href="index.html#products" class="nav-link">Discover</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-8">
+    <div id="success-root" class="max-w-2xl mx-auto text-center">
+      <p class="text-gray-600">Loading...</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section"><h3>STAY POSTED</h3><p class="text-sm mb-6">Keep up with all things Fenty Beauty.</p><a href="index.html" class="text-2xl font-bold">FENTY BEAUTY</a></div>
+        <div class="footer-section"><h3>CUSTOMER SERVICE</h3><p class="text-sm mb-2"><a href="mailto:customerservice@fentybeauty.com">customerservice@fentybeauty.com</a></p></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <div class="flex items-center gap-2"><span>🇪🇹</span><span>Ethiopia | English</span></div>
+          <div class="footer-links"><a href="#">Privacy</a><a href="#">Terms of Use</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function() {
+      var root = document.getElementById('success-root');
+      var order = null;
+      try { order = JSON.parse(sessionStorage.getItem('fenty_last_order') || 'null'); } catch (_) {}
+      if (order && order.items && order.items.length) {
+        var d = new Date(order.date || Date.now());
+        root.innerHTML = '<h1 class="text-4xl font-bold mb-4">Order Placed Successfully!</h1>' +
+          '<p class="text-lg text-gray-600 mb-8">Thank you for your order. Your order has been received. This is a demo — no real order was placed.</p>' +
+          '<div class="border border-gray-200 rounded-lg p-6 mb-6 text-left">' +
+          '<div class="mb-4"><h2 class="text-xl font-semibold mb-2">Order Details</h2>' +
+          '<p class="text-sm text-gray-600">Date: ' + d.toLocaleString() + '</p>' +
+          '<p class="text-sm text-gray-600">Status: <span class="font-semibold">Received</span></p></div>' +
+          '<div class="border-t border-gray-200 pt-4 mt-4"><h3 class="font-semibold mb-3">Order Items</h3>' +
+          '<div class="space-y-2">' + order.items.map(function(x) {
+            return '<div class="flex justify-between text-sm"><span>' + (x.name || '').replace(/</g,'&lt;') + ' x ' + (x.quantity || 1) + '</span><span>$' + Number((x.lineTotal || x.price * (x.quantity||1))).toFixed(2) + '</span></div>';
+          }).join('') + '</div>' +
+          '<div class="border-t border-gray-200 pt-2 mt-4"><div class="flex justify-between font-bold text-lg"><span>Total</span><span>$' + Number(order.total || 0).toFixed(2) + '</span></div></div></div></div>' +
+          '<a href="index.html" class="btn-primary inline-block">Continue Shopping</a>';
+        try { sessionStorage.removeItem('fenty_last_order'); } catch (_) {}
+      } else {
+        root.innerHTML = '<h1 class="text-4xl font-bold mb-4">Thank You</h1>' +
+          '<p class="text-lg text-gray-600 mb-8">We couldn\'t find order details. Your cart may have been cleared.</p>' +
+          '<a href="index.html" class="btn-primary inline-block">Continue Shopping</a>';
+      }
+    })();
+  </script>
+</body>
+</html>

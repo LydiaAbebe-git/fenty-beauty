@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product - Fenty Beauty</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="top-banner">
+    <div class="container"><p class="text-center text-sm">Free Standard shipping to Ethiopia over Br11668</p></div>
+  </div>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <div class="navbar-left"><span class="flag-icon">🇪🇹</span><span class="country-selector">Ethiopia | English</span></div>
+        <a href="index.html" class="logo">FENTY BEAUTY</a>
+        <div class="navbar-actions">
+          <button class="icon-btn" aria-label="Search"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></button>
+          <button class="icon-btn" aria-label="Wishlist"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button>
+          <a href="cart.html" class="cart-link" aria-label="Cart"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg></a>
+        </div>
+      </div>
+      <div class="navbar-links">
+        <a href="category.html?category=Holiday" class="nav-link">The Holiday Glow-Up Collection</a>
+        <a href="index.html#products" class="nav-link">New + Bestsellers</a>
+        <a href="category.html?category=Makeup" class="nav-link">Makeup</a>
+        <a href="category.html?category=Skincare" class="nav-link">Skincare</a>
+        <a href="category.html?category=Hair" class="nav-link">Hair</a>
+        <a href="category.html?category=Fragrance" class="nav-link">Fragrance</a>
+        <a href="category.html?category=Sale" class="nav-link sale-link">Up to 50% Off Sale</a>
+        <a href="index.html#products" class="nav-link">Discover</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-8">
+    <div id="product-root">
+      <p class="text-gray-600">Loading...</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>STAY POSTED + UNLOCK EXCLUSIVE OFFERS</h3>
+          <p class="text-sm mb-6">Keep up with all things Fenty Beauty + save on your next $35+ order.</p>
+          <form class="footer-newsletter mb-4" onsubmit="event.preventDefault();"><div class="flex gap-2"><input type="email" placeholder="Email" required><button type="submit">→</button></div></form>
+          <div class="mt-8"><a href="index.html" class="text-2xl font-bold">FENTY BEAUTY</a></div>
+        </div>
+        <div class="footer-section">
+          <h3>CUSTOMER SERVICE</h3>
+          <p class="text-sm mb-2"><a href="mailto:customerservice@fentybeauty.com">customerservice@fentybeauty.com</a></p>
+          <p class="text-sm mb-6"><a href="tel:18554407474">1-855-440-7474</a></p>
+        </div>
+        <div class="footer-section">
+          <h3>ABOUT</h3>
+          <p class="text-sm mb-6">Fenty Beauty was created by Rihanna with a vision to create products for all skin tones and hair textures.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-content">
+          <div class="flex items-center gap-2"><span>🇪🇹</span><span>Ethiopia | English</span></div>
+          <div class="footer-links"><a href="#">Privacy</a><a href="#">Terms of Use</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    (function() {
+      var params = new URLSearchParams(location.search);
+      var id = params.get('id');
+      var root = document.getElementById('product-root');
+      if (!id) { root.innerHTML = '<p class="text-gray-600">Product not found.</p><a href="index.html" class="btn-primary">Continue Shopping</a>'; return; }
+      var p = getProductById(id);
+      if (!p) { root.innerHTML = '<p class="text-gray-600">Product not found.</p><a href="index.html" class="btn-primary">Continue Shopping</a>'; return; }
+      document.title = p.name + ' - Fenty Beauty';
+      root.innerHTML = '<div class="product-detail">' +
+        '<div class="product-image-large"><img src="' + p.image + '" alt="' + p.name.replace(/"/g, '&quot;') + '"></div>' +
+        '<div class="product-info">' +
+        '<h1 class="text-4xl font-bold mb-4">' + String(p.name||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</h1>' +
+        '<p class="text-2xl font-semibold mb-4">$' + Number(p.price).toFixed(2) + '</p>' +
+        '<p class="text-gray-600 mb-6">' + String(p.description || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>') + '</p>' +
+        '<p class="text-sm text-gray-500 mb-4">Category: ' + p.category + '</p>' +
+        '<p class="text-sm text-gray-500 mb-6">Stock: ' + (p.stockCount || 0) + ' available</p>' +
+        '<button class="btn-primary add-to-cart-btn" data-product-id="' + p.id + '">Add to Cart</button>' +
+        '</div></div>';
+    })();
+  </script>
+</body>
+</html>

@@ -9,7 +9,7 @@ const PRODUCTS = [
   { id: 'p8', name: 'Fenty Hair Pre-Shampoo Scalp Scrub', description: 'A scalp scrub that exfoliates and refreshes your scalp before shampooing.', price: 28.00, image: 'uploads/1767641318-images.jpeg', category: 'Hair', stockCount: 95, inStock: true },
   { id: 'p9', name: 'The mista hair + body fragrance mist', description: 'Wealthy but worth it. lavish notes of amber, freesia, sparkling yuzu + coconut wrap you in luxury, escorting you into the soft life you deserve', price: 20.00, image: 'uploads/mista.jpg', category: 'Hair', stockCount: 20, inStock: true },
   { id: 'p10', name: 'The come back bond repair treatment', description: 'The come bakc kid bond repair treatment- now in bigger size for more happier repair when you need it.', price: 36.00, image: 'uploads/hair.jpg', category: 'Hair', stockCount: 75, inStock: true },
-  { id: 'p7', name: 'Instant Reset Overnight Recovery Gel-Cream', description: 'An overnight gel-cream that helps reset and restore your skin while you sleep.', price: 38.00, image: 'uploads/1767368966890-mbm-sslg-packshot-perfect-pink-6750c8304a194.webp', category: 'Skincare', stockCount: 75, inStock: true }
+  
 
 
 
